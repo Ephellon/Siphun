@@ -1,0 +1,2 @@
+# Siphun
+A hashing algorithm

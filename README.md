@@ -1,2 +1,12 @@
-# Siphun
-A hashing algorithm
+# Siphun (Signature Function)
+Designed to be a near-perfect hashing algorithm.
+
+## Why?
+The belief behind creating Siphun was that hashing tables shouldn't be a fixed length, but should instead have a variable length with a set maximum size. E.g. [MD5](https://www.ietf.org/rfc/rfc1321.txt) has a fixed length of sixteen 8-bit characters (32 hexadecimal characters), a maximum hash table size of 16<sup>32</sup> (340 undecillion<sup>1A</sup>) entries; while Siphun on the other hand, can have a length between 3 hexadecimal characters (empty string = **016**), and 256 alphanumeric characters (lowercase), providing a staggering [266 vigin-trillion](https://latex.codecogs.com/png.latex?%5Cdpi%7B150%7D%20%5Cbg_white%20%5Clarge%201%20&plus;%20%5Csum_%7Ba%3D1%7D%5E%7B256%7D%20%5Csum_%7Bb%3D16%7D%5E%7B36%7D%20b%5Ea)<sup>1B</sup> possible table entries.
+
+----
+
+## Notes
+
++ 1A) MD5: **340,282,366,920,938,463,463,374,607,431,768,211,456**
++ 1B) Siphun: **266,683,066,789,469,258,497,647,949,142,213,022,551,159,626,626,691,307,750,616,461,182,161,817,566,910,286,233,732,911,130,911,935,051,069,280,070,768,383,514,583,647,127,112,413,713,937,441,846,050,018,161,125,771,682,172,963,628,853,185,807,181,758,974,761,779,134,604,051,543,641,094,610,614,391,668,250,496,244,833,601,914,991,506,599,946,821,115,352,140,916,055,224,972,376,724,360,450,048,348,560,347,827,991,696,473,462,897,149,632,286,215,282,118,562,704,911,206,947,971,052,426,288,340,500,057,576,373,977,473,707,655,771**

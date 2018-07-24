@@ -6,6 +6,38 @@ The belief behind creating Siphun was that hashing tables shouldn't be a fixed l
 
 ----
 
+## Testing
+You can use the following code to test Siphun's fidelity outpput. Be sure to compile/append [siphun.js](sihpun.js) first.
+
+```javascript
+// Siphun - unit testing
+function test(string, ...fidels) {
+  var s = string, f = fidels,
+      q = '\u00b7', Q = '=',
+      S = [], T = [], X = Siphun;
+
+  var c = n => (n + 10).toString(36).toUpperCase().split('').reverse().join(''),
+      a = n => (() => {});
+
+  for(var i = 0, j, l = f.length; i < l;)
+    S.push(X(s, f[i++]));
+
+  for(i = 0; i < l; i++)
+    for(j = i + 1; j < l; j++)
+      T.push((function(A, B, C) {
+        for(var x = 0, t = '', n = 0, k = A.length, m = B.length; x < k || x < m; x++)
+          t += ( A[x] == B[x]? A[x]: q ),
+          n += +(x < m && t[x] != q);
+        return `\n${C[0] = c(C[0])} vs ${C[1] = c(C[1])}: Likeness ${Math.floor(100*(n/m))}% / char-count ${A.length} : ${B.length}\n${C[0]} > ${A}\n${C[1]} > ${B}\n    ${Q.repeat(x)}\n    ${t}`;
+      })(S[i], S[j], [i, j]));
+
+  for(i = 0; i < T.length; i++)
+    console.log(T[i]);
+}
+```
+
+----
+
 ## Notes
 
 + 1A) MD5: **340,282,366,920,938,463,463,374,607,431,768,211,456**

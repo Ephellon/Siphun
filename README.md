@@ -7,7 +7,7 @@ The belief behind creating Siphun was that hashing tables shouldn't be a fixed l
 ----
 
 ## Testing
-You can use the following code to test Siphun's fidelity outpput. Be sure to compile/append [siphun.js](sihpun.js) first.
+You can use the following code to test Siphun's fidelity outpput. Be sure to compile/append [siphun.js](siphun.js) first.
 
 ```javascript
 // Siphun - unit testing

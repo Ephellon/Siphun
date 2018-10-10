@@ -40,17 +40,17 @@ function Siphun(string = '', fidelity = 0) {
   array.forEach((value, index, self = this) =>
     (value == '')?
       self.splice(index, 1):
-    gamma += (value.charCodeAt(0) % 13)
+    gamma += (value.charCodeAt(0) % 13) | 0
   );
 
   for(let index = 0, length = array.length, last = length - 1; index < length; index++)
     for(let self = array[index], next = (array[index + 1] || ""), mirror = array[last], a, b, c, d, e, f, g = gamma, i = 0, j = self.length, k = mirror.length, l = length, m = k - 1, q = fidelity; i < j; ++i, --m, g = gamma += a + b + c + d + e + f)
-      a = method(self[i])         | 0,
-      b = method(self[j - i - 1]) - a,
-      c = method(mirror[m])       + b,
-      d = method(mirror[k - m])   ^ c,
-      e = method(next[i])         | d,
-      f = method(next[m])         ^ e,
+      a = (method(self[i])         | 0) | 0,
+      b = (method(self[j - i - 1]) - a) | 0,
+      c = (method(mirror[m])       + b) | 0,
+      d = (method(mirror[k - m])   ^ c) | 0,
+      e = (method(next[i])         | d) | 0,
+      f = (method(next[m])         ^ e) | 0,
       result.push(
         (((a ^ ~b) << (i + k)) |  (j & e) | g) ^
         (((b | -c) ^  (m + j)) |  (j & f) | g) ^
@@ -61,7 +61,7 @@ function Siphun(string = '', fidelity = 0) {
       );
 
   result.splice(fidelity, result.length - fidelity);
-  base = (gamma % 20) + fidelity;
+  base = (((gamma || 16) % 20) + (fidelity % 16));
 
   result.forEach((value, index, self) => self.splice(index, 1, Math.abs(value ^ gamma).toString(base)));
 

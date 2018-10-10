@@ -44,8 +44,8 @@ function Siphun(string = '', fidelity = 0) {
   );
 
   for(let index = 0, length = array.length, last = length - 1; index < length; index++)
-    for(let self = array[index], next = (array[index + 1] || ""), mirror = array[last], a, b, c, d, e, f, g = gamma, i = 0, j = self.length, k = mirror.length, l = length, m = k - 1, q = fidelity; i < j; ++i, --m, g = gamma += a + b + c + d + e + f)
-      a = (method(self[i])         | 0) | 0,
+    for(let self = array[index], next = (array[index + 1] || ""), mirror = array[last], a, b, c, d, e, f, g = gamma, i = 0, j = self.length, k = mirror.length, l = length, m = k - 1, q = fidelity; i < j; ++i, --m, gamma = g += a + b + c + d + e + f)
+      a = (method(self[i])         | q) | 0,
       b = (method(self[j - i - 1]) - a) | 0,
       c = (method(mirror[m])       + b) | 0,
       d = (method(mirror[k - m])   ^ c) | 0,
@@ -61,7 +61,7 @@ function Siphun(string = '', fidelity = 0) {
       );
 
   result.splice(fidelity, result.length - fidelity);
-  base = (((gamma || 16) % 20) + (fidelity % 16));
+  base = (((gamma | 32) % 20) + (fidelity % 16));
 
   result.forEach((value, index, self) => self.splice(index, 1, Math.abs(value ^ gamma).toString(base)));
 

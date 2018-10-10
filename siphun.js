@@ -40,7 +40,7 @@ function Siphun(string = '', fidelity = 0) {
   array.forEach((value, index, self = this) =>
     (value == '')?
       self.splice(index, 1):
-    gamma += value.charCodeAt(0)
+    gamma += (value.charCodeAt(0) % 13)
   );
 
   for(let index = 0, length = array.length, last = length - 1; index < length; index++)
@@ -65,9 +65,9 @@ function Siphun(string = '', fidelity = 0) {
 
   result.forEach((value, index, self) => self.splice(index, 1, (value ^ gamma).toString(base)));
 
-  string = result = result.join('').slice(0, 256);
+  result = result.join('').slice(0, 256);
   gamma = gamma.toString(base);
-  base = (base * fidelity).toString(base);
+  base = (base * (fidelity || 1)).toString(base);
 
   return R(result) + base + gamma;
 };

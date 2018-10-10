@@ -25,10 +25,12 @@ function test(string, ...fidels) {
   for(i = 0; i < l; i++)
     for(j = i + 1; j < l; j++)
       T.push((function(A, B, C) {
-        for(var x = 0, t = '', n = 0, k = A.length, m = B.length; x < k || x < m; x++)
-          t += ( A[x] == B[x]? A[x]: q ),
-          n += +(x < m && t[x] != q);
-        return `\n${C[0] = c(C[0])} vs ${C[1] = c(C[1])}: Likeness ${Math.floor(100*(n/m))}% / char-count ${A.length} : ${B.length}\n${C[0]} > ${A}\n${C[1]} > ${B}\n    ${Q.repeat(x)}\n    ${t}`;
+        for(var x = 0, t = '', n = 0, k = A.length, m = B.length, l, u; x < k || x < m; x++)
+          A = (q.repeat(m) + A).slice(-(k > m? k: m)),
+          B = (q.repeat(m) + B).slice(-(k > m? k: m)),
+          t += ( (u = A[x] == B[x])? A[x]: q ),
+          n += +u;
+        return `\n${C[0] = c(C[0])} vs ${C[1] = c(C[1])}: Likeness ${(100*(l=n/(k+m)))|0}% / char-count ${k}:${m} / Strength ${100-(l*(k+m))|0}%\n${C[0]} > ${A}\n${C[1]} > ${B}\n    ${Q.repeat(x)}\n    ${t}`;
       })(S[i], S[j], [i, j]));
 
   for(i = 0; i < T.length; i++)

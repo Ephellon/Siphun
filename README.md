@@ -30,7 +30,7 @@ function test(string, ...fidels) {
           B = (q.repeat(m) + B).slice(-(k > m? k: m)),
           t += ( (u = A[x] == B[x])? A[x]: q ),
           n += +u;
-        return `\n${C[0] = c(C[0])} vs ${C[1] = c(C[1])}: Likeness ${(100*(l=n/(k+m)))|0}% / char-count ${k}:${m} / Strength ${100-(l*(k+m))|0}%\n${C[0]} > ${A}\n${C[1]} > ${B}\n    ${Q.repeat(x)}\n    ${t}`;
+        return `\n${C[0] = c(C[0])} vs ${C[1] = c(C[1])}: Likeness ${(100*(l=n/m))|0}% / char-count ${k}:${m} / Strength ${100-(l*(k+m))|0}%\n${C[0]} > ${A}\n${C[1]} > ${B}\n    ${Q.repeat(x)}\n    ${t}`;
       })(S[i], S[j], [i, j]));
 
   for(i = 0; i < T.length; i++)

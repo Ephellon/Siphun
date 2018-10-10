@@ -33,7 +33,7 @@ function Siphun(string = '', fidelity = 0) {
     return S.join('');
   };
 
-  fidelity = 33 - ((fidelity * 16) | 0);
+  fidelity = 2 + ((fidelity * 14) | 0);
 
   method = s => s? s.charCodeAt(0): s;
 
@@ -46,24 +46,24 @@ function Siphun(string = '', fidelity = 0) {
   for(let index = 0, length = array.length, last = length - 1; index < length; index++)
     for(let self = array[index], next = (array[index + 1] || ""), mirror = array[last], a, b, c, d, e, f, g = gamma, i = 0, j = self.length, k = mirror.length, l = length, m = k - 1, q = fidelity; i < j; ++i, --m, g = gamma += a + b + c + d + e + f)
       a = method(self[i])         | 0,
-      b = method(self[j - i - 1]) | 0,
-      c = method(mirror[m])       | 0,
-      d = method(mirror[k - m])   | 0,
-      e = method(next[i])         | 0,
-      f = method(next[m])         | 0,
-      result.push(Math.abs(
+      b = method(self[j - i - 1]) - a,
+      c = method(mirror[m])       + b,
+      d = method(mirror[k - m])   ^ c,
+      e = method(next[i])         | d,
+      f = method(next[m])         ^ e,
+      result.push(
         (((a ^ ~b) << (i + k)) |  (j & e) | g) ^
         (((b | -c) ^  (m + j)) |  (j & f) | g) ^
         (((c & ~d) << (e - k)) >> (k ^ q) + g) ^
         (((d << a) ^  (f - j)) >> (k ^ q) + g) ^
 
         ((a & b | c ^ d) ^ e - f) << (q & e & f)
-      ));
+      );
 
   result.splice(fidelity, result.length - fidelity);
-  base = (gamma % 20) + 16;
+  base = (gamma % 20) + fidelity;
 
-  result.forEach((value, index, self) => self.splice(index, 1, (value ^ gamma).toString(base)));
+  result.forEach((value, index, self) => self.splice(index, 1, Math.abs(value ^ gamma).toString(base)));
 
   result = result.join('').slice(0, 256);
   gamma = gamma.toString(base);

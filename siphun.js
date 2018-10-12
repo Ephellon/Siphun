@@ -61,7 +61,7 @@ function Siphun(string = '', fidelity = 0) {
       );
 
   result.splice(fidelity, result.length - fidelity);
-  base = (((gamma | 32) % 20) + (fidelity % 16));
+  base = (((gamma | 32) % 20) + (fidelity % 16)) | 16;
 
   result.forEach((value, index, self) => self.splice(index, 1, Math.abs(value ^ gamma).toString(base)));
 

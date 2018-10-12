@@ -2,7 +2,7 @@
 Designed to be a near-perfect hashing algorithm.
 
 ## Why?
-The belief behind creating Siphun was that hashing tables shouldn't be a fixed length, but should instead have a variable length with a set maximum size. E.g. [MD5](https://www.ietf.org/rfc/rfc1321.txt) has a fixed length of sixteen 8-bit characters (32 hexadecimal characters), a maximum hash table size of 16<sup>32</sup> (340 undecillion<sup>1A</sup>) entries; while Siphun on the other hand, can have a length between 0 characters (empty string = **2100**), and 256 alphanumeric characters (lowercase), providing a staggering [266 vigin-trillion](https://latex.codecogs.com/png.latex?%5Cdpi%7B150%7D%20%5Cbg_white%20%5Clarge%201%20&plus;%20%5Csum_%7Ba%3D1%7D%5E%7B256%7D%20%5Csum_%7Bb%3D16%7D%5E%7B36%7D%20b%5Ea)<sup>1B</sup> possible table entries.
+The belief behind creating Siphun was that hashing tables shouldn't be a fixed length, but should instead have a variable length with a set maximum size. E.g. [MD5](https://www.ietf.org/rfc/rfc1321.txt) has a fixed length of sixteen 8-bit characters (32 hexadecimal characters), a maximum hash table size of 16<sup>32</sup> (340 undecillion<sup>1A</sup>) entries; while Siphun on the other hand, can have a length between 0 characters (empty string = **200**), and 256 alphanumeric characters (lowercase), providing a staggering [266 vigin-trillion](https://latex.codecogs.com/png.latex?%5Cdpi%7B150%7D%20%5Cbg_white%20%5Clarge%201%20&plus;%20%5Csum_%7Ba%3D1%7D%5E%7B256%7D%20%5Csum_%7Bb%3D16%7D%5E%7B36%7D%20b%5Ea)<sup>1B</sup> possible table entries.
 
 ----
 

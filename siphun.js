@@ -40,8 +40,10 @@ function Siphun(string = '', fidelity = 0) {
   array.forEach((value, index, self = this) =>
     (value == '')?
       self.splice(index, 1):
-    gamma += (value.charCodeAt(0) % 13) | 0
+    R(value).split('').forEach((c, p) => gamma += +R(c.charCodeAt(0) + index) * (p | 1))
   );
+
+  gamma = +R(gamma);
 
   for(let index = 0, length = array.length, last = length - 1; index < length; index++)
     for(let self = array[index], next = (array[index + 1] || ""), mirror = array[last], a, b, c, d, e, f, g = gamma, i = 0, j = self.length, k = mirror.length, l = length, m = k - 1, q = fidelity; i < j; ++i, --m, gamma = g += a + b + c + d + e + f)
